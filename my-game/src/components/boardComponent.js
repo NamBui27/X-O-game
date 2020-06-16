@@ -1,16 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import SquareComponent from './squareComponent';
-class BoardComponent extends Component {
+class BoardComponent extends React.Component {
     renderSquare(i) {
-        return <SquareComponent />;
+        return ( 
+        <SquareComponent 
+            value={this.props.squares[i]}
+            onClick={() => this.props.onClick(i)}
+        />
+        );
       }
     
       render() {
-        const status = 'Next player: X';
-    
         return (
           <div>
-            <div className="status">{status}</div>
             <div className="board-row">
                 {this.renderSquare(0)}
                 {this.renderSquare(1)}
